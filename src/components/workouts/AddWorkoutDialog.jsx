@@ -87,7 +87,7 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
               value={formData.discipline}
               exclusive
               onChange={(e, val) => val && handleChange('discipline', val)}
-              sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}
+              sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, '& .MuiToggleButtonGroup-grouped': { border: '1px solid #000', borderRadius: 0 } }}
             >
               {disciplines.map((disc) => (
                 <ToggleButton
@@ -96,11 +96,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
                   sx={{
                     px: 2,
                     py: 1,
-                    border: '1px solid #ddd',
+                    flex: '1 1 calc(33.333% - 12px)',
+                    minWidth: '90px',
+                    border: '1px solid #000 !important',
+                    borderRadius: '0 !important',
                     '&.Mui-selected': {
                       bgcolor: 'primary.main',
                       color: '#000',
-                      // Ensure SVG icons and nested elements inherit the selected color
+                      border: '1px solid #000 !important',
                       '& svg': { color: '#000' },
                       '&:hover': { bgcolor: 'primary.main' },
                     },
@@ -108,7 +111,7 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
                 >
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <DisciplineIcon discipline={disc} size={18} />
-                    {disc}
+                    {disc.charAt(0).toUpperCase() + disc.slice(1)}
                   </Box>
                 </ToggleButton>
               ))}
@@ -121,6 +124,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
             value={formData.title}
             onChange={(e) => handleChange('title', e.target.value)}
             fullWidth
+            sx={{
+              '& .MuiInputLabel-root': { color: '#000' },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': { borderColor: '#000' },
+                '&:hover fieldset': { borderColor: '#000' },
+                '&.Mui-focused fieldset': { borderColor: '#000' },
+              },
+            }}
           />
 
           <TextField
@@ -130,6 +141,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
             onChange={(e) => handleChange('date', e.target.value)}
             fullWidth
             InputLabelProps={{ shrink: true }}
+            sx={{
+              '& .MuiInputLabel-root': { color: '#000' },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': { borderColor: '#000' },
+                '&:hover fieldset': { borderColor: '#000' },
+                '&.Mui-focused fieldset': { borderColor: '#000' },
+              },
+            }}
           />
 
           {/* Duration & Distance */}
@@ -139,6 +158,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
               type="number"
               value={formData.duration}
               onChange={(e) => handleChange('duration', e.target.value)}
+              sx={{
+                '& .MuiInputLabel-root': { color: '#000' },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: '#000' },
+                  '&:hover fieldset': { borderColor: '#000' },
+                  '&.Mui-focused fieldset': { borderColor: '#000' },
+                },
+              }}
             />
             <TextField
               label={`Distance (${formData.discipline === 'swim' ? 'm' : 'km'})`}
@@ -146,6 +173,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
               step="0.1"
               value={formData.distance}
               onChange={(e) => handleChange('distance', e.target.value)}
+              sx={{
+                '& .MuiInputLabel-root': { color: '#000' },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: '#000' },
+                  '&:hover fieldset': { borderColor: '#000' },
+                  '&.Mui-focused fieldset': { borderColor: '#000' },
+                },
+              }}
             />
           </Box>
 
@@ -157,6 +192,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
                 type="number"
                 value={formData.avgHeartRate}
                 onChange={(e) => handleChange('avgHeartRate', e.target.value)}
+                sx={{
+                  '& .MuiInputLabel-root': { color: '#000' },
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': { borderColor: '#000' },
+                    '&:hover fieldset': { borderColor: '#000' },
+                    '&.Mui-focused fieldset': { borderColor: '#000' },
+                  },
+                }}
               />
               <TextField
                 label="Avg Pace (min/km)"
@@ -164,6 +207,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
                 step="0.1"
                 value={formData.avgPace}
                 onChange={(e) => handleChange('avgPace', e.target.value)}
+                sx={{
+                  '& .MuiInputLabel-root': { color: '#000' },
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': { borderColor: '#000' },
+                    '&:hover fieldset': { borderColor: '#000' },
+                    '&.Mui-focused fieldset': { borderColor: '#000' },
+                  },
+                }}
               />
             </Box>
           )}
@@ -176,6 +227,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
               value={formData.elevationGain}
               onChange={(e) => handleChange('elevationGain', e.target.value)}
               fullWidth
+              sx={{
+                '& .MuiInputLabel-root': { color: '#000' },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': { borderColor: '#000' },
+                  '&:hover fieldset': { borderColor: '#000' },
+                  '&.Mui-focused fieldset': { borderColor: '#000' },
+                },
+              }}
             />
           )}
 
@@ -207,12 +266,20 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
             multiline
             rows={3}
             fullWidth
+            sx={{
+              '& .MuiInputLabel-root': { color: '#000' },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': { borderColor: '#000' },
+                '&:hover fieldset': { borderColor: '#000' },
+                '&.Mui-focused fieldset': { borderColor: '#000' },
+              },
+            }}
           />
         </Box>
       </DialogContent>
 
       <DialogActions sx={{ p: 2.5, pt: 1 }}>
-        <Button onClick={handleClose} sx={{ color: 'text.secondary' }}>
+        <Button onClick={handleClose} sx={{ color: '#000', border: '1px solid #000', borderRadius: 0 }}>
           Cancel
         </Button>
         <Button
@@ -221,7 +288,10 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
           sx={{
             bgcolor: 'primary.main',
             color: '#000',
-            '&:hover': { bgcolor: '#000', color: 'primary.main' },
+            border: 'none',
+            boxShadow: 'none',
+            borderRadius: 0,
+            '&:hover': { bgcolor: '#000', color: 'primary.main', boxShadow: 'none' },
           }}
         >
           Add Workout

@@ -12,7 +12,8 @@ export default function CircleButton({ children, onClick, size = 64, sx = {} }) 
         border: '2px solid #000',
         color: '#000',
         transition: 'all 0.3s ease-out',
-        '&:hover': { bgcolor: '#000', color: 'primary.main' },
+        boxShadow: 'none',
+        '&:hover': { bgcolor: '#000', color: 'primary.main', boxShadow: 'none' },
         ...sx,
       }}
     >
