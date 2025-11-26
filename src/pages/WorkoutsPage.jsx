@@ -1,18 +1,17 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import SectionHeader from '../components/common/SectionHeader';
 import WorkoutCard from '../components/workouts/WorkoutCard';
-import { mockWorkouts } from '../services/mockData';
 
-export default function WorkoutsPage() {
+export default function WorkoutsPage({ workouts }) {
   return (
     <Box>
       <Card>
         <CardContent>
           <SectionHeader title="All Workouts" backgroundText="LOG" />
           <Typography color="text.secondary" sx={{ mb: 3 }}>
-            {mockWorkouts.length} workouts logged
+            {workouts.length} workouts logged
           </Typography>
-          {mockWorkouts.map((workout) => (
+          {workouts.map((workout) => (
             <WorkoutCard
               key={workout.id}
               workout={workout}

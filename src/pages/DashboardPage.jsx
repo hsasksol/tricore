@@ -9,10 +9,9 @@ import PaceTrendChart from '../components/charts/PaceTrendChart';
 import HRZonesChart from '../components/charts/HRZonesChart';
 import TrainingLoadChart from '../components/charts/TrainingLoadChart';
 import useWorkoutData from '../hooks/useWorkoutData';
-import { mockWorkouts } from '../services/mockData';
 import { formatDuration } from '../utils/formatters';
 
-export default function DashboardPage() {
+export default function DashboardPage({ workouts }) {
   const {
     selectedDisciplines,
     dateRange,
@@ -29,7 +28,7 @@ export default function DashboardPage() {
     paceTrendData,
     hrZonesData,
     trainingLoadData,
-  } = useWorkoutData(mockWorkouts);
+  } = useWorkoutData(workouts);
 
   const maxDistance = Math.max(stats.swim, stats.bike, stats.run);
 

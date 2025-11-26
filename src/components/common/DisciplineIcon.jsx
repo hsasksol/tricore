@@ -59,3 +59,17 @@ export const DISCIPLINE_ICONS = {
   bike: BikeIcon,
   run: RunIcon,
 };
+
+export default function DisciplineIcon({ discipline, size = 18, color }) {
+  const Icon = DISCIPLINE_ICONS[discipline];
+  
+  if (!Icon) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color || 'currentColor'}>
+        <circle cx="12" cy="12" r="10" strokeWidth="2" />
+      </svg>
+    );
+  }
+  
+  return <Icon width={size} height={size} style={{ color }} />;
+}

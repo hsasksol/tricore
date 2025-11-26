@@ -7,9 +7,8 @@ import HRZonesChart from '../components/charts/HRZonesChart';
 import TrainingLoadChart from '../components/charts/TrainingLoadChart';
 import WorkoutCard from '../components/workouts/WorkoutCard';
 import useWorkoutData from '../hooks/useWorkoutData';
-import { mockWorkouts } from '../services/mockData';
 
-export default function AnalyticsPage() {
+export default function AnalyticsPage({ workouts }) {
   const {
     selectedDisciplines,
     dateRange,
@@ -25,7 +24,7 @@ export default function AnalyticsPage() {
     paceTrendData,
     hrZonesData,
     trainingLoadData,
-  } = useWorkoutData(mockWorkouts);
+  } = useWorkoutData(workouts);
 
   return (
     <Box>
