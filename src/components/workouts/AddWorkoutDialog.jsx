@@ -100,6 +100,8 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
                     '&.Mui-selected': {
                       bgcolor: 'primary.main',
                       color: '#000',
+                      // Ensure SVG icons and nested elements inherit the selected color
+                      '& svg': { color: '#000' },
                       '&:hover': { bgcolor: 'primary.main' },
                     },
                   }}
