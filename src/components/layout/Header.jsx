@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, Button, IconButton, Menu, MenuItem, useTheme } from '@mui/material';
 import { Add, Menu as MenuIcon } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
@@ -124,6 +124,7 @@ export default function Header({ onAddWorkout }) {
     </Box>
   );
 }
+
 import { Box, Typography, Button, IconButton, Menu, MenuItem, useTheme } from '@mui/material';
 import { Add, Menu as MenuIcon } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
