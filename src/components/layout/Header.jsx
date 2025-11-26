@@ -24,7 +24,18 @@ export default function Header({ onAddWorkout }) {
         alignItems: 'center',
       }}
     >
-      <Typography variant="h4" sx={{ fontSize: 20, fontWeight: 700 }}>
+      <Typography 
+        variant="h4" 
+        component={Link}
+        to="/"
+        sx={{ 
+          fontSize: 20, 
+          fontWeight: 700,
+          textDecoration: 'none',
+          color: 'inherit',
+          '&:hover': { opacity: 0.8 },
+        }}
+      >
         <Box component="span" sx={{ color: 'primary.main' }}>
           TRI
         </Box>
