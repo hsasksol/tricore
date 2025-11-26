@@ -173,6 +173,10 @@ Commercial use requires a license. Free for demos/personal projects.
 - **Global Highcharts theme** matching design system
 - **GitHub Pages deployment** with automated workflow
 - **Proper routing** with basename for subdirectory hosting
+- **Responsive header**:
+  - Desktop: Logo left, nav center, single + button right
+  - Mobile: Logo left (visible), centered + button, burger menu right
+  - Consistent black (#000) background for all discipline filter buttons
 
 ### 🔲 Next Steps (Priority Order)
 
