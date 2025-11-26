@@ -3,7 +3,7 @@ import { DISCIPLINE_ICONS } from './DisciplineIcon';
 
 const DISCIPLINES = [
   { key: 'swim', label: 'Swim', color: '#000' },
-  { key: 'bike', label: 'Bike', color: '#3d3d3d' },
+  { key: 'bike', label: 'Bike', color: '#000' },
   { key: 'run', label: 'Run', color: '#000' },
 ];
 

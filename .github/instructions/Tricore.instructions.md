@@ -1,14 +1,16 @@
-# TRICORE - Triathlon Training Tracker
+# TRICORE.AI - Triathlon Training Tracker
 
 ## Project Overview
-A triathlon training tracker app showcasing Highcharts React v4 with a distinctive "Stronger" visual design theme. Tracks swim, bike, and run workouts, displays training analytics, with planned Strava/Garmin integration and AI coaching features.
+A triathlon training tracker app showcasing Highcharts React v4 with a distinctive "Stronger" visual design theme. Tracks swim, bike, and run workouts, displays training analytics, with manual workout entry and localStorage persistence. Live on GitHub Pages with planned Strava/Garmin integration and AI coaching features.
 
 ## Tech Stack
-- **Frontend:** React 18 + Vite
+- **Frontend:** React 19 + Vite 7
 - **UI Library:** Material UI (MUI) v6
 - **Charts:** Highcharts v12 + @highcharts/react v4 (component-based API)
-- **Routing:** React Router v6
-- **Planned:** Supabase (database), Vercel (hosting), Claude API (coaching)
+- **Routing:** React Router v6 (with basename for GitHub Pages)
+- **Storage:** localStorage (for custom workouts)
+- **Hosting:** GitHub Pages (https://hsasksol.github.io/tricore/)
+- **Planned:** Supabase (database), Claude API (coaching)
 
 ## Commands
 ```bash
@@ -28,12 +30,30 @@ src/
 │   │   ├── HRZonesChart.jsx      # Donut/pie (HR zones)
 │   │   └── TrainingLoadChart.jsx # Area spline (TSS)
 │   ├── common/           # Reusable UI components
+│   │   ├── CircleButton.jsx      # Round action button
+│   │   ├── DisciplineIcon.jsx    # SVG icons for sports
+│   │   ├── FilterBar.jsx         # Combined filter controls
+│   │   └── StatCard.jsx          # Metric display cards
 │   ├── dashboard/        # Dashboard-specific components
+│   │   └── DisciplineBar.jsx     # Volume bars per sport
 │   ├── layout/           # Header, Layout wrapper
-│   └── workouts/         # Workout list components
-├── pages/                # Route pages (Dashboard, Workouts, Races, Analytics)
-├── services/mockData.js  # Sample data (replace with Supabase later)
-├── utils/                # formatters.js, constants.js
+│   │   ├── Header.jsx            # Top nav with logo & menu
+│   │   └── Layout.jsx            # Main layout wrapper
+│   └── workouts/         # Workout-related components
+│       ├── AddWorkoutDialog.jsx  # Form for manual entry
+│       └── WorkoutCard.jsx       # Single workout display
+├── hooks/
+│   └── useWorkoutData.js # Filter & chart data logic
+├── pages/                # Route pages
+│   ├── DashboardPage.jsx # Main page with charts
+│   ├── WorkoutsPage.jsx  # Full workout list
+│   ├── RacesPage.jsx     # Upcoming races
+│   └── AnalyticsPage.jsx # Detailed analytics
+├── services/
+│   └── mockData.js       # Demo data (60 workouts)
+├── utils/
+│   ├── formatters.js     # Date, time, distance formatters
+│   └── constants.js      # Discipline & race type constants
 ├── theme/theme.js        # MUI theme configuration
 └── styles/globals.css    # Global styles, fonts
 ```
@@ -98,14 +118,26 @@ export default function MyChart({ data }) {
 ## Important Configuration Notes
 
 ### Vite Config (vite.config.js)
-Must include `resolve.dedupe` to fix React hook errors:
+Must include `resolve.dedupe` to fix React hook errors and `base` for GitHub Pages:
 ```javascript
 export default defineConfig({
   plugins: [react()],
+  base: '/tricore/',
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
 })
+```
+
+### React Router Config
+BrowserRouter must use `basename` to match Vite's base:
+```jsx
+<BrowserRouter basename="/tricore">
+  <Routes>
+    <Route path="/" element={<DashboardPage />} />
+    {/* ... */}
+  </Routes>
+</BrowserRouter>
 ```
 
 ### MUI Grid v2
@@ -126,24 +158,36 @@ Commercial use requires a license. Free for demos/personal projects.
 - **Workouts page** with full workout list
 - **Races page** with upcoming races
 - **Analytics page** (standalone, but charts now also on dashboard)
+- **Add Workout Dialog** - Manual workout entry with:
+  - Discipline selector (swim/bike/run/brick/strength/rest)
+  - Duration, distance, heart rate, pace inputs
+  - Elevation gain (bike/run only)
+  - Perceived effort slider (1-10)
+  - Notes field
+  - localStorage persistence
 - **Filter system**: DisciplineFilter, DateRangeFilter, FilterBar components
 - **useWorkoutData hook** - central state management for filtering, highlights, chart data
 - **Interactive charts**: week selection (VolumeChart), hover sync (workouts ↔ pace chart)
 - **Reusable components**: CircleButton, StatCard, SectionHeader, WorkoutCard, DisciplineBar
-- **SVG discipline icons** (swim, bike, run)
+- **SVG discipline icons** (swim, bike, run) with default export wrapper
 - **Global Highcharts theme** matching design system
+- **GitHub Pages deployment** with automated workflow
+- **Proper routing** with basename for subdirectory hosting
 
 ### 🔲 Next Steps (Priority Order)
 
-**Phase 1: Polish & UX** ✅ Interactivity complete
-- Fix MUI Grid v2 warnings (`item`, `xs`, `md` props)
-- Add loading states for charts
-- Responsive layout improvements
-- Empty state designs
+**Phase 1: Polish & UX** ✅ Complete
+- ✅ Interactive charts with filtering
+- ✅ Manual workout entry
+- ✅ localStorage persistence
+- 🔲 Fix MUI Grid v2 warnings (`item`, `xs`, `md` props)
+- 🔲 Add loading states for charts
+- 🔲 Empty state designs
 
-**Phase 2: Deployment**
-- Initialize Git, push to GitHub (github.com/hsasksol/tricore)
-- Connect to Vercel
+**Phase 2: Deployment** ✅ Complete
+- ✅ Initialize Git, push to GitHub (github.com/hsasksol/tricore)
+- ✅ GitHub Pages deployment with automated workflow
+- ✅ Live at https://hsasksol.github.io/tricore/
 
 **Phase 3: Supabase**
 - Tables: profiles, workouts, races
