@@ -24,7 +24,7 @@ export default function App() {
   const allWorkouts = [...customWorkouts, ...mockWorkouts];
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/tricore">
       <Layout onAddWorkout={handleAddWorkout}>
         <Routes>
           <Route path="/" element={<DashboardPage workouts={allWorkouts} />} />
