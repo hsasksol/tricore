@@ -6,7 +6,11 @@ import { formatDistance } from '../../utils/formatters';
 export default function DisciplineBar({ discipline, distance, maxDistance, index }) {
   const config = DISCIPLINES[discipline];
   const Icon = DISCIPLINE_ICONS[discipline];
-  const percentage = maxDistance > 0 ? (distance / maxDistance) * 100 : 0;
+  
+  // Normalize by typical distances: swim x10, run x2, bike x1
+  const normalizers = { swim: 10, run: 2, bike: 1 };
+  const normalizedDistance = distance * (normalizers[discipline] || 1);
+  const percentage = maxDistance > 0 ? (normalizedDistance / maxDistance) * 100 : 0;
   const fills = ['#000', '#EEFB13', '#3d3d3d'];
 
   return (

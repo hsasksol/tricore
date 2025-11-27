@@ -30,7 +30,8 @@ export default function DashboardPage({ workouts }) {
     trainingLoadData,
   } = useWorkoutData(workouts);
 
-  const maxDistance = Math.max(stats.swim, stats.bike, stats.run);
+  // Normalize distances for fair comparison (swim x10, run x2, bike x1)
+  const normalizedTotal = (stats.swim * 10) + (stats.run * 2) + (stats.bike * 1);
 
   return (
     <Box>
@@ -98,7 +99,7 @@ export default function DashboardPage({ workouts }) {
                 <DisciplineBar
                   discipline="swim"
                   distance={stats.swim}
-                  maxDistance={maxDistance}
+                  maxDistance={normalizedTotal}
                   index={0}
                 />
               )}
@@ -106,7 +107,7 @@ export default function DashboardPage({ workouts }) {
                 <DisciplineBar
                   discipline="bike"
                   distance={stats.bike}
-                  maxDistance={maxDistance}
+                  maxDistance={normalizedTotal}
                   index={1}
                 />
               )}
@@ -114,7 +115,7 @@ export default function DashboardPage({ workouts }) {
                 <DisciplineBar
                   discipline="run"
                   distance={stats.run}
-                  maxDistance={maxDistance}
+                  maxDistance={normalizedTotal}
                   index={2}
                 />
               )}
