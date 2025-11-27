@@ -252,7 +252,14 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
               marks
               valueLabelDisplay="auto"
               sx={{
-                '& .MuiSlider-thumb': { bgcolor: 'primary.main' },
+                '& .MuiSlider-thumb': { 
+                  bgcolor: 'primary.main',
+                  border: '2px solid #000',
+                  boxShadow: 'none',
+                  '&:hover': { boxShadow: 'none' },
+                  '&.Mui-focusVisible': { boxShadow: 'none' },
+                  '&.Mui-active': { boxShadow: 'none' },
+                },
                 '& .MuiSlider-track': { bgcolor: 'primary.main' },
               }}
             />

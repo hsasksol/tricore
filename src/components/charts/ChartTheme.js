@@ -1,4 +1,5 @@
-import { Highcharts } from '@highcharts/react';
+import Highcharts from 'highcharts';
+import 'highcharts/modules/accessibility';
 
 Highcharts.setOptions({
   colors: ['#000', '#EEFB13', '#3d3d3d', '#888'],
@@ -41,4 +42,4 @@ Highcharts.setOptions({
   credits: { enabled: false },
 });
 
-export { Highcharts };
+export default Highcharts;
