@@ -261,6 +261,11 @@ export default function AddWorkoutDialog({ open, onClose, onAdd }) {
                   '&.Mui-active': { boxShadow: 'none' },
                 },
                 '& .MuiSlider-track': { bgcolor: 'primary.main' },
+                '& .MuiSlider-valueLabel': {
+                  bgcolor: '#000',
+                  color: '#fff',
+                  borderRadius: 0,
+                },
               }}
             />
           </Box>
