@@ -84,7 +84,7 @@ export default function Header({ onAddWorkout }) {
           zIndex: 10,
         }}
       >
-        <CircleButton size={48} onClick={onAddWorkout}>
+        <CircleButton size={48} onClick={onAddWorkout} aria-label="Add new workout">
           <Add />
         </CircleButton>
       </Box>
@@ -93,14 +93,14 @@ export default function Header({ onAddWorkout }) {
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {/* Add button - desktop only */}
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-          <CircleButton size={40} onClick={onAddWorkout}>
+          <CircleButton size={40} onClick={onAddWorkout} aria-label="Add new workout">
             <Add />
           </CircleButton>
         </Box>
 
         {/* Burger menu - mobile only */}
         <Box sx={{ display: { xs: 'block', md: 'none' } }}>
-          <IconButton onClick={handleMenuOpen} sx={{ color: '#fff' }} aria-label="menu">
+          <IconButton onClick={handleMenuOpen} sx={{ color: '#fff' }} aria-label="Open navigation menu">
             <MenuIcon />
           </IconButton>
         </Box>

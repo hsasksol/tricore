@@ -9,8 +9,24 @@ import { mockWorkouts } from './services/mockData';
 
 export default function App() {
   const [customWorkouts, setCustomWorkouts] = useState(() => {
-    const saved = localStorage.getItem('tricoreWorkouts');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('tricoreWorkouts');
+      if (!saved) return [];
+      
+      const parsed = JSON.parse(saved);
+      // Validate it's an array and filter out invalid entries
+      if (!Array.isArray(parsed)) return [];
+      
+      return parsed.filter(workout => 
+        workout && 
+        typeof workout.id === 'string' &&
+        typeof workout.discipline === 'string' &&
+        ['swim', 'bike', 'run', 'brick', 'strength', 'rest'].includes(workout.discipline)
+      );
+    } catch (error) {
+      console.error('Failed to load workouts from localStorage:', error);
+      return [];
+    }
   });
 
   useEffect(() => {

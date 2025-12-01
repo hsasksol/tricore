@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography, Skeleton, Grid } from '@mui/material';
 import SectionHeader from '../components/common/SectionHeader';
 import FilterBar from '../components/common/FilterBar';
 import VolumeChart from '../components/charts/VolumeChart';
@@ -42,7 +42,7 @@ export default function AnalyticsPage({ workouts }) {
 
       <Grid container spacing={3}>
         {/* Volume - Full width */}
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <Card>
             <CardContent>
               <VolumeChart
@@ -61,7 +61,7 @@ export default function AnalyticsPage({ workouts }) {
         </Grid>
 
         {/* Pace & HR Zones - Half width each */}
-        <Grid item xs={12} md={6}>
+        <Grid xs={12} md={6}>
           <Card>
             <CardContent>
               <PaceTrendChart
@@ -72,7 +72,7 @@ export default function AnalyticsPage({ workouts }) {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid xs={12} md={6}>
           <Card>
             <CardContent>
               <HRZonesChart data={hrZonesData} />
@@ -81,7 +81,7 @@ export default function AnalyticsPage({ workouts }) {
         </Grid>
 
         {/* Training Load - Full width */}
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <Card>
             <CardContent>
               <TrainingLoadChart data={trainingLoadData} />
@@ -91,7 +91,7 @@ export default function AnalyticsPage({ workouts }) {
 
         {/* Filtered Workouts Panel */}
         {selectedWeek !== null && (
-          <Grid item xs={12}>
+          <Grid xs={12}>
             <Card>
               <CardContent>
                 <SectionHeader
@@ -105,7 +105,7 @@ export default function AnalyticsPage({ workouts }) {
                 ) : (
                   <Grid container spacing={2}>
                     {filteredWorkouts.map((workout) => (
-                      <Grid item xs={12} md={6} key={workout.id}>
+                      <Grid xs={12} md={6} key={workout.id}>
                         <WorkoutCard
                           workout={workout}
                           onClick={() => {}}

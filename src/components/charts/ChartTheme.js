@@ -1,5 +1,10 @@
 import Highcharts from 'highcharts';
-import 'highcharts/modules/accessibility';
+import accessibility from 'highcharts/modules/accessibility';
+
+// Initialize accessibility module
+if (typeof accessibility === 'function') {
+  accessibility(Highcharts);
+}
 
 Highcharts.setOptions({
   colors: ['#000', '#EEFB13', '#3d3d3d', '#888'],
@@ -40,6 +45,12 @@ Highcharts.setOptions({
     pie: { borderWidth: 2, borderColor: '#fff' },
   },
   credits: { enabled: false },
+  accessibility: {
+    enabled: true,
+    keyboardNavigation: {
+      enabled: true,
+    },
+  },
 });
 
 export default Highcharts;

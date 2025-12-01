@@ -8,6 +8,8 @@ export const SwimIcon = (props) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    role="img"
+    aria-label="Swim icon"
     {...props}
   >
     <path d="M2 12c1.5 0 2.5 1 3.5 1s2-1 3.5-1 2.5 1 3.5 1 2-1 3.5-1 2.5 1 3.5 1" />
@@ -27,6 +29,8 @@ export const BikeIcon = (props) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    role="img"
+    aria-label="Bike icon"
     {...props}
   >
     <circle cx="5.5" cy="17.5" r="3.5" />
@@ -45,6 +49,8 @@ export const RunIcon = (props) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    role="img"
+    aria-label="Run icon"
     {...props}
   >
     <circle cx="14" cy="4" r="2" />

@@ -20,6 +20,9 @@ export default function DisciplineFilter({ selected, onToggle }) {
             icon={Icon ? <Icon style={{ color: isSelected ? '#fff' : '#000' }} /> : undefined}
             label={label}
             onClick={() => onToggle(key)}
+            aria-label={`Filter by ${label}`}
+            role="switch"
+            aria-checked={isSelected}
             sx={{
               bgcolor: isSelected ? color : 'transparent',
               color: isSelected ? '#fff' : '#000',

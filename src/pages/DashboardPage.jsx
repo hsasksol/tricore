@@ -1,4 +1,4 @@
-import { Box, Typography, Card, CardContent, Grid } from '@mui/material';
+import { Box, Typography, Card, CardContent, Skeleton } from '@mui/material';
 import StatCard from '../components/common/StatCard';
 import SectionHeader from '../components/common/SectionHeader';
 import WorkoutCard from '../components/workouts/WorkoutCard';

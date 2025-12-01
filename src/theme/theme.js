@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#EEFB13',
+      main: '#D4E600', // Mørkere lime for bedre kontrast (WCAG AA compliant)
       contrastText: '#000',
     },
     secondary: {
@@ -32,7 +32,15 @@ const theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        root: { borderRadius: 0, padding: '14px 28px', boxShadow: 'none' },
+        root: { 
+          borderRadius: 0, 
+          padding: '14px 28px', 
+          boxShadow: 'none',
+          '&:focus-visible': {
+            outline: '3px solid #D4E600',
+            outlineOffset: '2px',
+          },
+        },
       },
     },
     MuiCard: {
@@ -48,6 +56,26 @@ const theme = createTheme({
             '& fieldset': { borderColor: '#ebebeb' },
             '&:hover fieldset': { borderColor: '#000' },
             '&.Mui-focused fieldset': { borderColor: '#000', borderWidth: 1 },
+          },
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '&:focus-visible': {
+            outline: '3px solid #D4E600',
+            outlineOffset: '2px',
+          },
+        },
+      },
+    },
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          '&:focus-visible': {
+            outline: '3px solid #D4E600',
+            outlineOffset: '2px',
           },
         },
       },
