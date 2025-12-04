@@ -115,6 +115,15 @@ export default function MyChart({ data }) {
 - Import `ChartTheme.js` to apply global theme via `Highcharts.setOptions()`
 - See existing chart components for patterns: VolumeChart, PaceTrendChart, HRZonesChart, TrainingLoadChart
 
+### STRICT PACKAGE RULE (READ CAREFULLY)
+
+- **ALWAYS** use the official React integration package `@highcharts/react` (the v4+ integration maintained by Highcharts).
+- **NEVER** fall back to or install the legacy package named `highcharts-react-official` under any circumstances.
+- If a dependency or example suggests `highcharts-react-official`, replace it with `@highcharts/react` and update imports accordingly.
+- When updating dependencies or scaffolded examples, confirm `@highcharts/react` is present in `package.json` and referenced in code imports.
+
+This rule ensures we keep the modern component-based API, prevent subtle API drift, and avoid maintenance/deprecation issues.
+
 ## Important Configuration Notes
 
 ### Vite Config (vite.config.js)
