@@ -1,4 +1,5 @@
-import { Chart, Series, Title, XAxis, YAxis } from '@highcharts/react';
+import { Chart, Title, XAxis, YAxis } from '@highcharts/react';
+import { ColumnSeries } from '@highcharts/react/series/Column';
 import './ChartTheme';
 
 export default function VolumeChart({ data, onWeekClick, selectedWeek }) {
@@ -46,9 +47,9 @@ export default function VolumeChart({ data, onWeekClick, selectedWeek }) {
         }}
       />
       <YAxis options={{ title: { text: 'Distance (km)' }, stackLabels: { enabled: true } }} />
-      <Series type="column" data={data.swim} options={{ name: 'Swim', color: '#000' }} />
-      <Series type="column" data={data.bike} options={{ name: 'Bike', color: '#EEFB13' }} />
-      <Series type="column" data={data.run} options={{ name: 'Run', color: '#3d3d3d' }} />
+      <ColumnSeries data={data.swim} options={{ name: 'Swim', color: '#000' }} />
+      <ColumnSeries data={data.bike} options={{ name: 'Bike', color: '#EEFB13' }} />
+      <ColumnSeries data={data.run} options={{ name: 'Run', color: '#3d3d3d' }} />
     </Chart>
   );
 }
