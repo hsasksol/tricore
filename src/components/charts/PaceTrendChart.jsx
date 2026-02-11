@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
-import { Chart, Series, Title, XAxis, YAxis } from '@highcharts/react';
+import { Chart, Title, XAxis, YAxis } from '@highcharts/react';
+import { SplineSeries } from '@highcharts/react/series/Spline';
 import './ChartTheme';
 
 export default function PaceTrendChart({ data, highlightedWorkoutId, onPointHover }) {
@@ -108,9 +109,8 @@ export default function PaceTrendChart({ data, highlightedWorkoutId, onPointHove
         }}
       />
       {seriesData.map((series, index) => (
-        <Series
+        <SplineSeries
           key={index}
-          type="spline"
           data={series.data}
           options={{ name: series.name, color: series.color }}
         />
